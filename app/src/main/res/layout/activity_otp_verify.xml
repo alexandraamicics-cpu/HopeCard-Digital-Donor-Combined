@@ -72,13 +72,14 @@
             app:layout_constraintTop_toBottomOf="@id/tvTitle"
             app:layout_constraintStart_toStartOf="parent" />
 
-        <!-- OTP boxes -->
+        <!-- OTP boxes (6 digits) -->
         <LinearLayout
             android:id="@+id/otpContainer"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:orientation="horizontal"
+            android:gravity="center"
             app:layout_constraintTop_toBottomOf="@id/tvSub"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent">
@@ -86,37 +87,55 @@
             <androidx.cardview.widget.CardView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="5dp"
+                android:layout_margin="4dp"
                 app:cardCornerRadius="8dp"
                 app:cardElevation="4dp">
-                <EditText android:id="@+id/otp_box_1" android:layout_width="50dp" android:layout_height="60dp" android:background="@drawable/bg_input_selector" android:gravity="center" android:inputType="number" android:maxLength="1" android:textSize="20sp" android:textStyle="bold" />
+                <EditText android:id="@+id/otp_box_1" android:layout_width="44dp" android:layout_height="56dp" android:background="@drawable/bg_input_selector" android:gravity="center" android:inputType="number" android:maxLength="1" android:textSize="20sp" android:textStyle="bold" />
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="5dp"
+                android:layout_margin="4dp"
                 app:cardCornerRadius="8dp"
                 app:cardElevation="4dp">
-                <EditText android:id="@+id/otp_box_2" android:layout_width="50dp" android:layout_height="60dp" android:background="@drawable/bg_input_selector" android:gravity="center" android:inputType="number" android:maxLength="1" android:textSize="20sp" android:textStyle="bold" />
+                <EditText android:id="@+id/otp_box_2" android:layout_width="44dp" android:layout_height="56dp" android:background="@drawable/bg_input_selector" android:gravity="center" android:inputType="number" android:maxLength="1" android:textSize="20sp" android:textStyle="bold" />
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="5dp"
+                android:layout_margin="4dp"
                 app:cardCornerRadius="8dp"
                 app:cardElevation="4dp">
-                <EditText android:id="@+id/otp_box_3" android:layout_width="50dp" android:layout_height="60dp" android:background="@drawable/bg_input_selector" android:gravity="center" android:inputType="number" android:maxLength="1" android:textSize="20sp" android:textStyle="bold" />
+                <EditText android:id="@+id/otp_box_3" android:layout_width="44dp" android:layout_height="56dp" android:background="@drawable/bg_input_selector" android:gravity="center" android:inputType="number" android:maxLength="1" android:textSize="20sp" android:textStyle="bold" />
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="5dp"
+                android:layout_margin="4dp"
                 app:cardCornerRadius="8dp"
                 app:cardElevation="4dp">
-                <EditText android:id="@+id/otp_box_4" android:layout_width="50dp" android:layout_height="60dp" android:background="@drawable/bg_input_selector" android:gravity="center" android:inputType="number" android:maxLength="1" android:textSize="20sp" android:textStyle="bold" />
+                <EditText android:id="@+id/otp_box_4" android:layout_width="44dp" android:layout_height="56dp" android:background="@drawable/bg_input_selector" android:gravity="center" android:inputType="number" android:maxLength="1" android:textSize="20sp" android:textStyle="bold" />
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                app:cardCornerRadius="8dp"
+                app:cardElevation="4dp">
+                <EditText android:id="@+id/otp_box_5" android:layout_width="44dp" android:layout_height="56dp" android:background="@drawable/bg_input_selector" android:gravity="center" android:inputType="number" android:maxLength="1" android:textSize="20sp" android:textStyle="bold" />
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                app:cardCornerRadius="8dp"
+                app:cardElevation="4dp">
+                <EditText android:id="@+id/otp_box_6" android:layout_width="44dp" android:layout_height="56dp" android:background="@drawable/bg_input_selector" android:gravity="center" android:inputType="number" android:maxLength="1" android:textSize="20sp" android:textStyle="bold" />
             </androidx.cardview.widget.CardView>
         </LinearLayout>
 

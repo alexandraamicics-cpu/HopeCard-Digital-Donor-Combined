@@ -1,9 +1,10 @@
 package com.example.hopecard.ui.login
 
 import android.content.Intent
+import android.content.res.ColorStateList
+import android.graphics.Color
 import android.os.Bundle
 import android.util.Patterns
-import android.view.View
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
@@ -13,6 +14,7 @@ import com.example.hopecard.R
 import com.example.hopecard.ui.forgot.ForgotPasswordActivity
 import com.example.hopecard.ui.profile.EditProfileActivity
 import com.example.hopecard.ui.signup.SignUpActivity
+import com.google.android.material.card.MaterialCardView
 
 class LoginActivity : AppCompatActivity() {
 
@@ -23,13 +25,11 @@ class LoginActivity : AppCompatActivity() {
         val etEmail = findViewById<EditText>(R.id.etEmail)
         val etPassword = findViewById<EditText>(R.id.etPassword)
 
-        // Containers for highlight (LinearLayouts)
-        val emailContainer = findViewById<View>(R.id.emailContainer)
-        val passwordContainer = findViewById<View>(R.id.passwordContainer)
+        val cardEmail = findViewById<MaterialCardView>(R.id.cardEmail)
+        val cardPassword = findViewById<MaterialCardView>(R.id.cardPassword)
 
-        // CardViews (tap area) for focusing inputs
-        val cardEmail = findViewById<View>(R.id.cardEmail)
-        val cardPassword = findViewById<View>(R.id.cardPassword)
+        val colorNormal = ColorStateList.valueOf(Color.parseColor("#E6D7D7"))
+        val colorFocused = ColorStateList.valueOf(Color.parseColor("#B94F4F"))
 
         // Login "button" (CardView + TextView)
         val cardLogin = findViewById<CardView>(R.id.cardLogin)
@@ -38,16 +38,16 @@ class LoginActivity : AppCompatActivity() {
         val tvForgot = findViewById<TextView>(R.id.tvForgot)
         val tvSignUp = findViewById<TextView>(R.id.tvSignUp)
 
-        // Tap card focuses EditText (so highlight triggers even if user taps icon/blank area)
+        // Tap card focuses EditText
         cardEmail.setOnClickListener { etEmail.requestFocus() }
         cardPassword.setOnClickListener { etPassword.requestFocus() }
 
-        // Highlight effect using bg_input_selector (state_selected)
+        // Highlight border on focus using MaterialCardView strokeColor
         etEmail.setOnFocusChangeListener { _, hasFocus ->
-            emailContainer.isSelected = hasFocus
+            cardEmail.strokeColor = if (hasFocus) Color.parseColor("#B94F4F") else Color.parseColor("#E6D7D7")
         }
         etPassword.setOnFocusChangeListener { _, hasFocus ->
-            passwordContainer.isSelected = hasFocus
+            cardPassword.strokeColor = if (hasFocus) Color.parseColor("#B94F4F") else Color.parseColor("#E6D7D7")
         }
 
         tvSignUp.setOnClickListener {
@@ -67,28 +67,21 @@ class LoginActivity : AppCompatActivity() {
                     etEmail.error = "Email is required"
                     etEmail.requestFocus()
                 }
-
                 !Patterns.EMAIL_ADDRESS.matcher(email).matches() -> {
                     etEmail.error = "Enter a valid email"
                     etEmail.requestFocus()
                 }
-
                 pass.isEmpty() -> {
                     etPassword.error = "Password is required"
                     etPassword.requestFocus()
                 }
-
                 pass.length < 6 -> {
                     etPassword.error = "Password must be at least 6 characters"
                     etPassword.requestFocus()
                 }
-
                 else -> {
                     // TODO(BACKEND): Authenticate against your backend (API call) and obtain a session/token.
-                    // TODO(BACKEND): On success, persist token (EncryptedSharedPreferences) and fetch user profile.
                     Toast.makeText(this, "Logged in successfully!", Toast.LENGTH_SHORT).show()
-
-                    // Demo navigation target.
                     startActivity(Intent(this, EditProfileActivity::class.java))
                 }
             }

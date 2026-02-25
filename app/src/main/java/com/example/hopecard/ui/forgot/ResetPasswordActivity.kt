@@ -1,5 +1,6 @@
 package com.example.hopecard.ui.forgot
 
+import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -10,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager2.widget.ViewPager2
 import com.example.hopecard.R
 import com.example.hopecard.ui.signup.CarouselAdapter
+import com.example.hopecard.ui.signup.SignUpActivity
 
 class ResetPasswordActivity : AppCompatActivity() {
 
@@ -38,9 +40,17 @@ class ResetPasswordActivity : AppCompatActivity() {
         btnContinue.setOnClickListener {
             if (passwordInput.text.isNotEmpty()) {
                 // TODO(BACKEND): Submit new password to backend (requires verified OTP token).
-                Toast.makeText(this, "Password Reset Successfully! (stub)", Toast.LENGTH_LONG).show()
+                Toast.makeText(this, "Password reset successfully!", Toast.LENGTH_LONG).show()
                 finish()
+            } else {
+                Toast.makeText(this, "Please enter a new password", Toast.LENGTH_SHORT).show()
             }
+        }
+
+        // Sign up button
+        val tvSignUp = findViewById<TextView>(R.id.tvSignUp)
+        tvSignUp.setOnClickListener {
+            startActivity(Intent(this, SignUpActivity::class.java))
         }
     }
 
