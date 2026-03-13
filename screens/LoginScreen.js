@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, ImageBackground, TouchableOpacity, ScrollView, SafeAreaView } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, ScrollView, SafeAreaView } from 'react-native';
 import CustomInput from '../components/CustomInput';
 import CustomButton from '../components/CustomButton';
 import { colors } from '../styles/colors';
@@ -34,11 +34,11 @@ const LoginScreen = ({ navigation }) => {
             secureTextEntry
           />
 
-          <TouchableOpacity style={styles.forgotPasswordContainer}>
+          <TouchableOpacity style={styles.forgotPasswordContainer} onPress={() => navigation.navigate('ForgotPasswordStep1')}>
             <Text style={styles.forgotPasswordText}>Forgot Password?</Text>
           </TouchableOpacity>
 
-          <CustomButton title="Login" onPress={() => {}} />
+          <CustomButton title="Login" onPress={() => navigation.replace('Home')} />
 
           <View style={styles.signupContainer}>
              <Text style={styles.signupText}>Don't have an account? </Text>
