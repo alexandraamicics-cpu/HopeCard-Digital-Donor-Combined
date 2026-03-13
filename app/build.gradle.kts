@@ -1,6 +1,12 @@
 plugins {
     alias(libs.plugins.android.application)
+    alias(libs.plugins.kotlin.android)
     alias(libs.plugins.compose.compiler)
+    id("com.facebook.react")
+}
+
+react {
+    autolinkLibrariesWithApp()
 }
 
 android {
@@ -18,11 +24,15 @@ android {
         versionCode = 1
         versionName = "1.0"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+        buildConfigField("boolean", "IS_NEW_ARCHITECTURE_ENABLED", "false")
+        buildConfigField("boolean", "IS_HERMES_ENABLED", "true")
     }
 
     buildFeatures {
         viewBinding = true
         compose = true
+        buildConfig = true
     }
 
     buildTypes {
@@ -50,6 +60,10 @@ dependencies {
     implementation("androidx.cardview:cardview:1.0.0")
     implementation(libs.androidx.recyclerview)
     implementation(libs.androidx.viewpager2)
+
+    // React Native host + JS engine
+    implementation("com.facebook.react:react-android")
+    implementation("com.facebook.react:hermes-android")
 
     // Jetpack Compose
     implementation(platform("androidx.compose:compose-bom:2025.01.00"))
