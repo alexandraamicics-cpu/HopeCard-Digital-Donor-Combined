@@ -2,4 +2,5 @@
 plugins {
     alias(libs.plugins.android.application) apply false
     alias(libs.plugins.kotlin.android) apply false
+    id("com.facebook.react") version "0.76.7" apply false
 }
